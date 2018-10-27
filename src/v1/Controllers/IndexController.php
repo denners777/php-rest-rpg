@@ -16,7 +16,7 @@ class IndexController
     private $container;
 
     /**
-     * AuthController constructor.
+     * IndexController constructor.
      * @param $container
      */
     public function __construct($container)
@@ -25,17 +25,16 @@ class IndexController
     }
 
     /**
+     * 
      * @param Request $request
      * @param Response $response
-     * @param $args
-     * @return mixed
-     * @throws \Exception
+     * @param type $args
+     * @return type
      */
     public function __invoke(Request $request, Response $response, $args)
     {
-        $return = 'work';
-        return $response->withJson($return, 200)
-                        ->withHeader('Content-type', 'application/json');
+        $renderer = $this->container->get('renderer');
+        $renderer->render($response, 'index.phtml');
     }
 
 }

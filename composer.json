@@ -1,6 +1,6 @@
 {
     "name": "denners777/php-rest-rpg",
-    "description": "Projeto de um game RPG em PHP",
+    "description": "Projeto game RPG em PHP",
     "keywords": [
         "php",
         "slim",
@@ -21,13 +21,14 @@
     ],
     "require": {
         "slim/slim": "^3.11",
+        "slim/middleware": "^1.0",
+        "slim/php-view": "^2.2",
         "oscarotero/psr7-middlewares": "^3.21",
         "monolog/monolog": "^1.23",
         "tuupola/cors-middleware": "^0.9.1",
         "vlucas/phpdotenv": "^2.5",
         "vlucas/valitron": "^1.4",
-        "illuminate/database": "^5.7",
-        "slim/middleware": "^1.0"
+        "illuminate/database": "^5.7"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1"
