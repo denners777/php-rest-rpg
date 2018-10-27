@@ -1,0 +1,43 @@
+{
+    "name": "denners777/php-rest-rpg",
+    "description": "Projeto de um game RPG em PHP",
+    "keywords": [
+        "php",
+        "slim",
+        "game",
+        "api",
+        "rpg"
+    ],
+    "version": "1.0.0",
+    "type": "project",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Denner Fernandes",
+            "email": "denners777@hotmail.com",
+            "homepage": "https://github.com/denners777/",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "slim/slim": "^3.11",
+        "oscarotero/psr7-middlewares": "^3.21",
+        "monolog/monolog": "^1.23",
+        "tuupola/cors-middleware": "^0.9.1",
+        "vlucas/phpdotenv": "^2.5",
+        "vlucas/valitron": "^1.4",
+        "illuminate/database": "^5.7",
+        "slim/middleware": "^1.0"
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "./src"
+        }
+    },
+    "scripts": {
+        "start": "php -S localhost:8080 -t public"
+    }
+}
