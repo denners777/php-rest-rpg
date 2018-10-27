@@ -1,10 +1,8 @@
 # PHP-REST GAME RPG
 
-## Instalação a Aplicação
+## InstalaÃ§Ã£o a AplicaÃ§Ã£o
 
 Clone o repositorio e na pasta do projeto execute:
 
-    ```
     php composer.phar install
-	php composer.phar start
-	```
+    php composer.phar start
