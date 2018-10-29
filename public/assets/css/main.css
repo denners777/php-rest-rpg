@@ -1,0 +1,45 @@
+body {
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("../img/bg.jpg");
+  background-size: cover;
+  background-position: center right;
+}
+.menu {
+  min-height: 100vh;
+}
+.menu .brand {
+  display: block;
+  text-align: center;
+}
+.menu .btn {
+  font-size: 0.55rem;
+  display: block;
+}
+.menu #player {
+  display: block;
+}
+.canvas {
+  min-height: 100vh;
+}
+.frame {
+  display: none;
+}
+#characters {
+  display: block;
+}
+#characters a:hover img {
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1);
+}
+#characters a img {
+  -webkit-transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  -ms-transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+}
+.menuCharacter {
+  display: none;
+}
