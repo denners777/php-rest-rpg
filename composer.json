@@ -25,10 +25,7 @@
         "slim/php-view": "^2.2",
         "oscarotero/psr7-middlewares": "^3.21",
         "monolog/monolog": "^1.23",
-        "tuupola/cors-middleware": "^0.9.1",
-        "vlucas/phpdotenv": "^2.5",
-        "vlucas/valitron": "^1.4",
-        "illuminate/database": "^5.7"
+        "tuupola/cors-middleware": "^0.9.1"
     },
     "require-dev": {
         "symfony/var-dumper": "^4.1"
