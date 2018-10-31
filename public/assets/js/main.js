@@ -92,7 +92,7 @@ const viewDiceBattle = function (value) {
     $('.dice.battle').html(value);
 }
 
-const stroke = function (attack, defense) {
+const stroke = async function (attack, defense) {
     setTimeout(function () {
         ataque(attack).done(function (data) {
             $('.msg' + attack).html('Ataque: ' + data);
@@ -115,7 +115,7 @@ const defesa = function (character) {
     return $.get('/v1/battle/defense/' + character);
 }
 
-const damage = function () {
+const damage = async function () {
     setTimeout(function () {
         let attack = $('#atacante').val();
         let defense = attack === 'Human' ? 'Orc' : 'Human';
