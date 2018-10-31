@@ -52,7 +52,21 @@ class BattleController
 
         $defense = $object->getDefense();
 
-        $return = (new Dice())->roll(20, $defense);
+        $return = (new Dice())->roll(20) + $defense;
+        return $response->withJson($return, 200)
+                        ->withHeader('Content-type', 'application/json');
+    }
+
+    public function Damage(Request $request, Response $response, $args)
+    {
+        $character = $args['character'];
+
+        $object = $this->setCharacter($character);
+
+        $strength = $object->strength;
+        $sides    = $object->dice;
+
+        $return = (new Dice())->roll($sides) + $strength;
         return $response->withJson($return, 200)
                         ->withHeader('Content-type', 'application/json');
     }

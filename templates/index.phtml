@@ -49,7 +49,7 @@
                                     <nav id="menuHuman" class="menuCharacter">
                                         <div class="progress">
                                             <label>HP</label>
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $human->hp; ?>" aria-valuemin="0" style="width: 100%" aria-valuemax="<?php echo $human->hp; ?>">
+                                            <div id="progressHuman" class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $human->hp; ?>" aria-valuemin="0" style="width: 100%" aria-valuemax="<?php echo $human->hp; ?>">
                                             </div>
                                         </div>
                                         <ul class="list-attributes">
@@ -83,7 +83,9 @@
                                     <img src="assets/img/human_p.png" class="img-fluid" />
                                     <div class="msgHuman bg-light text-center"></div>
                                 </div>
-                                <div class="col-2"></div>
+                                <div class="col-2">
+                                    <input id="atacante" type="hidden" />
+                                </div>
                                 <div class="col-3 mt-5">
                                     <div id="numberDiceOrc"></div>
                                     <input id="inputNumberDiceOrc" type="hidden" />
@@ -95,7 +97,7 @@
                                     <nav id="menuOrc" class="menuCharacter">
                                         <div class="progress">
                                             <label>HP</label>
-                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $orc->hp; ?>" aria-valuemin="0" style="width: 100%" aria-valuemax="<?php echo $orc->hp; ?>">
+                                            <div id="progressOrc" class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $orc->hp; ?>" aria-valuemin="0" style="width: 100%" aria-valuemax="<?php echo $orc->hp; ?>">
                                             </div>
                                         </div>
                                         <ul class="list-attributes">

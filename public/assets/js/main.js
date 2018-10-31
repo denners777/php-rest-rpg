@@ -52,6 +52,8 @@ const start = function (e) {
     elemento.hide();
     let escolha = elemento.data('dice');
     let outro = escolha === 'Human' ? 'Orc' : 'Human';
+    $('.msg' + escolha).html('');
+    $('.msg' + outro).html('');
     iniciativa(escolha).done(function (data) {
         viewDiceBattle(data);
         $('#numberDice' + escolha).html("<span class='badge badge-warning'>" + data + "</span>");
@@ -70,13 +72,16 @@ const start = function (e) {
         }
         if (gamer < enemy) {
             $('.msg' + outro).html('Ataca Primeiro');
+            $('#atacante').val(outro);
             stroke(outro, escolha);
         }
         if (gamer > enemy) {
             $('.msg' + escolha).html('Ataca Primeiro');
+            $('#atacante').val(escolha);
             stroke(escolha, outro);
         }
     }, 1000);
+    return false;
 }
 
 const iniciativa = function (character) {
@@ -97,7 +102,9 @@ const stroke = function (attack, defense) {
             $('.msg' + defense).html('Defesa: ' + data);
             $('#inputAtkDef' + defense).val(data);
         });
+        damage();
     }, 1000);
+    return false;
 }
 
 const ataque = function (character) {
@@ -106,4 +113,49 @@ const ataque = function (character) {
 
 const defesa = function (character) {
     return $.get('/v1/battle/defense/' + character);
+}
+
+const damage = function () {
+    setTimeout(function () {
+        let attack = $('#atacante').val();
+        let defense = attack === 'Human' ? 'Orc' : 'Human';
+
+        let atk = $('#inputAtkDef' + attack).val();
+        let def = $('#inputAtkDef' + defense).val();
+
+        if (atk > def) {
+            dano(attack).done(function (data) {
+                let progress = $('#progress' + defense);
+                let max = parseInt(progress.attr('aria-valuemax'));
+                let total = parseInt(progress.attr('aria-valuenow'));
+                let restante = total - data;
+                progress.attr('aria-valuenow', restante);
+                let width = Math.round(100 / (max - restante))
+                progress.attr('style', 'width: ' + width + '%;');
+                $('.msg' + defense).html('Recebeu ' + data + ' de dano!!!');
+                $('.msg' + attack).html('');
+                console.log(max, restante, width);
+                if (restante <= 0) {
+                    setTimeout(function () {
+                        $('.msg' + defense).html('');
+                        $('.msg' + attack).html('Você venceu!!!');
+                    }, 1000);
+                    return false;
+                }
+            });
+        } else {
+            $('.msg' + defense).html('Defendeu!!!');
+            $('.msg' + attack).html('');
+        }
+        setTimeout(function () {
+            $('#battledice').data('dice', defense);
+            start($('#battledice'));
+        }, 1000);
+
+    }, 1000);
+    return false;
+}
+
+const dano = function (character) {
+    return $.get('/v1/battle/damage/' + character);
 }
