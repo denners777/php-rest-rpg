@@ -45,9 +45,34 @@
                         <section class="frame mt-5" id="game">
                             <div class="row text-center">
                                 <div class="col-2 mt-5">
-                                    <nav id="menuHuman" class="menuCharacter mt-5">
-                                        <a class="btn btn-sm btn-danger btn-block" onclick="attack('human')">Atacar</a>
-                                        <a class="btn btn-sm btn-warning btn-block" onclick="defend('human')">Defender</a>
+                                    <nav id="menuHuman" class="menuCharacter">
+                                        <div class="progress">
+                                            <label>HP</label>
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $human->hp; ?>" aria-valuemin="0" style="width: 100%" aria-valuemax="<?php echo $human->hp; ?>">
+                                            </div>
+                                        </div>
+                                        <ul class="list-attributes">
+                                            <li>
+                                                <span class="title">Arma</span>
+                                                <span class="content"><img src="assets/img/<?php echo $human->weapon; ?>" /></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Ataque</span>
+                                                <span class="content"><?php echo $human->attack; ?></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Defesa</span>
+                                                <span class="content"><?php echo $human->defense; ?></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Força</span>
+                                                <span class="content"><?php echo $human->strength; ?></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Agilidade</span>
+                                                <span class="content"><?php echo $human->agility; ?></span>
+                                            </li>
+                                        </ul>
                                     </nav>
                                 </div>
                                 <div class="col-3 mt-5">
@@ -58,9 +83,34 @@
                                     <img src="assets/img/orc_p.png" class="img-fluid" />
                                 </div>
                                 <div class="col-2 mt-5">
-                                    <nav id="menuOrc" class="menuCharacter mt-5">
-                                        <a class="btn btn-sm btn-danger btn-block" onclick="attack('orc')">Atacar</a>
-                                        <a class="btn btn-sm btn-warning btn-block" onclick="defend('orc')">Defender</a>
+                                    <nav id="menuOrc" class="menuCharacter">
+                                        <div class="progress">
+                                            <label>HP</label>
+                                            <div class="progress-bar bg-warning" role="progressbar" aria-valuenow="<?php echo $orc->hp; ?>" aria-valuemin="0" style="width: 100%" aria-valuemax="<?php echo $orc->hp; ?>">
+                                            </div>
+                                        </div>
+                                        <ul class="list-attributes">
+                                            <li>
+                                                <span class="title">Arma</span>
+                                                <span class="content"><img src="assets/img/<?php echo $orc->weapon; ?>" /></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Ataque</span>
+                                                <span class="content"><?php echo $orc->attack; ?></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Defesa</span>
+                                                <span class="content"><?php echo $orc->defense; ?></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Força</span>
+                                                <span class="content"><?php echo $orc->strength; ?></span>
+                                            </li>
+                                            <li>
+                                                <span class="title">Agilidade</span>
+                                                <span class="content"><?php echo $orc->agility; ?></span>
+                                            </li>
+                                        </ul>
                                     </nav>
                                 </div>
                             </div>

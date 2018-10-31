@@ -40,6 +40,33 @@ body {
   -o-transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
   transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
 }
-.menuCharacter {
-  display: none;
+.progress {
+  height: 20px;
+}
+.progress label {
+  padding: 0 5px;
+}
+.list-attributes {
+  font-size: 1rem;
+  list-style: none;
+  text-align: left;
+  padding: 0;
+  background-color: #FFF;
+  margin-top: 35px;
+}
+.list-attributes li {
+  padding: 2px;
+}
+.list-attributes li span {
+  display: inline-block;
+}
+.list-attributes li .title {
+  width: 75%;
+}
+.list-attributes li .content {
+  width: 18%;
+  text-align: center;
+}
+.list-attributes li .content img {
+  height: 20px;
 }

@@ -47,13 +47,4 @@ let characterChoice = function (character) {
     decision.play();
     $('#characters').fadeOut();
     $('#game').fadeIn();
-    $('#menu' + character).show();
-}
-
-let attack = function (character){
-    
-}
-
-let defend = function (character){
-    
 }
