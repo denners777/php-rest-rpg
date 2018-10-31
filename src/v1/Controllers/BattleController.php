@@ -6,6 +6,7 @@ use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 use App\v1\Models\Human;
 use App\v1\Models\Orc;
+use App\v1\Models\Dice;
 
 class BattleController
 {
@@ -17,24 +18,53 @@ class BattleController
      * @param array $args
      * @return int
      */
-    public function rollDice(Request $request, Response $response, $args)
+    public function RollDice(Request $request, Response $response, $args)
     {
         $character = $args['character'];
 
-        switch ($character) {
-            case 'human':
-                $sides = (new Human())->dice;
-                break;
-            case 'orc':
-                $sides = (new Orc())->dice;
-                break;
-            default:
-                $sides = 20;
-                break;
-        }
+        $object = $this->setCharacter($character);
 
-        return $response->withJson(mt_rand(1, $sides), 200)
+        $agility = $object->agility;
+
+        $return = (new Dice())->roll(20) + $agility;
+        return $response->withJson($return, 200)
                         ->withHeader('Content-type', 'application/json');
+    }
+
+    public function Attack(Request $request, Response $response, $args)
+    {
+        $character = $args['character'];
+
+        $object = $this->setCharacter($character);
+
+        $attack = $object->getAttack();
+
+        $return = (new Dice())->roll(20) + $attack;
+        return $response->withJson($return, 200)
+                        ->withHeader('Content-type', 'application/json');
+    }
+
+    public function Defense(Request $request, Response $response, $args)
+    {
+        $character = $args['character'];
+
+        $object = $this->setCharacter($character);
+
+        $defense = $object->getDefense();
+
+        $return = (new Dice())->roll(20, $defense);
+        return $response->withJson($return, 200)
+                        ->withHeader('Content-type', 'application/json');
+    }
+
+    private function setCharacter($character)
+    {
+        switch ($character) {
+            case 'Human':
+                return new Human();
+            case 'Orc':
+                return new Orc();
+        }
     }
 
 }

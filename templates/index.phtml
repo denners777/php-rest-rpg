@@ -43,7 +43,7 @@
                             </div>
                         </section>
                         <section class="frame mt-5" id="game">
-                            <div class="msg text-center text-light">Para começar clique em "Começar".</div>
+                            <div class="msg text-center text-light">Para iniciar clique em "Começar".</div>
                             <div class="row text-center">
                                 <div class="col-2 mt-5">
                                     <nav id="menuHuman" class="menuCharacter">
@@ -79,13 +79,17 @@
                                 <div class="col-3 mt-5">
                                     <div id="numberDiceHuman"></div>
                                     <input id="inputNumberDiceHuman" type="hidden" />
+                                    <input id="inputAtkDefHuman" type="hidden" />
                                     <img src="assets/img/human_p.png" class="img-fluid" />
+                                    <div class="msgHuman bg-light text-center"></div>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-3 mt-5">
                                     <div id="numberDiceOrc"></div>
                                     <input id="inputNumberDiceOrc" type="hidden" />
+                                    <input id="inputAtkDefOrc" type="hidden" />
                                     <img src="assets/img/orc_p.png" class="img-fluid" />
+                                    <div class="msgOrc bg-light text-center"></div>
                                 </div>
                                 <div class="col-2 mt-5">
                                     <nav id="menuOrc" class="menuCharacter">
@@ -121,18 +125,10 @@
                             </div>
                             <div class="row dices text-light text-center">
                                 <div class="col"></div>
-                                <div class="col-3">
-                                    <label>Dado de <?php echo $human->dice; ?> lados</label>
-                                    <span class="dice human"></span>
-                                </div>
                                 <div class="col-2">
-                                    <label>Dado de 20 lados</label>
+                                    <label>Dado</label>
                                     <span class="dice battle"></span><br />
                                     <a class="btn btn-sm btn-light text-body" id="battledice" data-dice="" onclick="start(this)">Começar</a>
-                                </div>
-                                <div class="col-3">
-                                    <label>Dado de <?php echo $orc->dice; ?> lados</label>
-                                    <span class="dice orc"></span>
                                 </div>
                                 <div class="col"></div>
                             </div>

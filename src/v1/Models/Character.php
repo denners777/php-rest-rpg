@@ -55,4 +55,22 @@ class Character
         
     }
 
+    /**
+     * 
+     * @return int
+     */
+    public function getAttack()
+    {
+        return $this->attack + $this->agility;
+    }
+
+    /**
+     * 
+     * @return int
+     */
+    public function getDefense()
+    {
+        return $this->defense + $this->agility;
+    }
+
 }
