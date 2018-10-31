@@ -10,14 +10,6 @@ class Battle
         
     }
 
-    /**
-     * 
-     * @param int $sides
-     * @return int
-     */
-    protected function rollDice($sides)
-    {
-        return mt_rand(1, $sides);
-    }
+    
 
 }

@@ -1,4 +1,4 @@
-var hasAudio = localStorage.getItem('audio');
+const hasAudio = localStorage.getItem('audio');
 
 $(document).ready(function () {
 
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 });
 
-let checkAudio = function (audio) {
+const checkAudio = function (audio) {
     localStorage.setItem('audio', audio.paused);
     if (audio.paused) {
         return audio.play();
@@ -24,7 +24,7 @@ let checkAudio = function (audio) {
     return audio.pause();
 }
 
-let playSomMenu = function () {
+const playSomMenu = function () {
 
     if (hasAudio) {
         let somMenu = new Audio();
@@ -41,10 +41,34 @@ let playSomMenu = function () {
     }
 }
 
-let characterChoice = function (character) {
+const characterChoice = function (character) {
     let decision = new Audio();
     decision.src = 'assets/sounds/decision.mp3';
     decision.play();
     $('#characters').fadeOut();
     $('#game').fadeIn();
+    $('#battledice').data('dice', character);
+}
+
+const start = function (e) {
+    let elemento = $(e);
+    elemento.hide();
+    let escolha = elemento.data('dice');
+    let outro = escolha === 'Human' ? 'Orc' : 'Human';
+
+    iniciativa().done(function (data) {
+        $('.dice.battle').html(data);
+        $('#numberDice' + escolha).html("<span class='badge badge-warning'>" + data + "</span>");
+        $('#inputNumberDice' + escolha).val(data);
+    });
+    iniciativa().done(function (data) {
+        $('.dice.battle').html(data);
+        $('#numberDice' + outro).html("<span class='badge badge-warning'>" + data + "</span>");
+        $('#inputNumberDice' + outro).val(data);
+    });
+    
+}
+
+const iniciativa = function () {
+    return $.get('/v1/battle/dice/20');
 }
