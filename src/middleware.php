@@ -39,24 +39,3 @@ $container['notFoundHandler'] = function ($container) {
 };
 
 $app->add(new Psr7Middlewares\Middleware\TrailingSlash(false));
-
-$container['CorsMiddleware'] = function ($container) {
-    return new Tuupola\Middleware\CorsMiddleware([
-        'logger'         => $container['logger'],
-        'origin'         => [getenv('REQUEST_ORIGIN')],
-        'methods'        => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
-        'headers.allow'  => [],
-        'headers.expose' => [],
-        'credentials'    => false,
-        'cache'          => 0,
-        'error'          => function ($response, $arguments) {
-            $data['status']  = 'error';
-            $data['message'] = $arguments['message'];
-            return $response
-                            ->withHeader('Content-Type', 'application/json')
-                            ->withJson($data);
-        }
-    ]);
-};
-
-$app->add('CorsMiddleware');
